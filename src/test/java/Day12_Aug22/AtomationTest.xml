@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression">
+    <test name="End to End Test" preserve-order="true">
+        <classes>
+            <class name="Day12_Aug22.TestNG_Assertion" />
+            <class name="Day12_Aug22.Yahoo_Checkbox_Assertion" />
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

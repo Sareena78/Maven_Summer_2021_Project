@@ -12,13 +12,13 @@ public class BaseClass extends Reusable_Annotations_Class_Html_Report {
     //create static reference for google home page
     public static HomePage homePage(){
         HomePage homePage = new HomePage(driver);
-        return  homePage;
+        return homePage;
     }//end of googleHomePage method
 
     //create static reference for search result page
     public static SearchResultPage searchResultPage(){
         SearchResultPage searchResultPage = new SearchResultPage(driver);
-        return  searchResultPage;
+        return searchResultPage;
     }//end of search result page method
 
 

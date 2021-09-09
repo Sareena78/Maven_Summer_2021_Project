@@ -48,11 +48,44 @@ public class ReUsableMethods {
             }
         }//end of sendKeysMethod
 
+        //Method do hover over an element belonging to a group of elements with a shared xpath
+        public static void hoverMethodByIndex(WebDriver driver, String xpath, int index, String elementName){
+            //create a wait object using the WebDriverWait class
+            //you can use the "until" method on to the wait object for an explicit wait
+            WebDriverWait wait = new WebDriverWait(driver, 15);
+            try {
+                System.out.println("Trying to hover over " + elementName);
+                //Create the hover object which is an instance of the Actions class and give it access to driver.
+                Actions hover = new Actions(driver);
+                //Expected Conditions is a Class that is used as an argument by the "until" method
+                WebElement element = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xpath))).get(index);
+                //move your cursor over the element
+                hover.moveToElement(element).perform();
+            }catch(Exception err){
+                System.out.println("Unable to hover " + elementName);
+            }//end of try catch
+        }//end of hoverMethodByIndex class
+
+        //Method to click on an element belonging to a group of elements with a shared xpath
+        public static void clickByIndex(WebDriver driver, String xpath, int index, String elementName){
+            WebDriverWait wait = new WebDriverWait(driver,15);
+            try {
+                System.out.println("Trying to click " +elementName);
+                //Click on element by using index
+                WebElement element = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xpath))).get(index);
+                element.click();
+            }catch (Exception err){
+                System.out.println("Unalbe to click " + elementName);
+            }//end of try catch
+        }//end of click by index method
+
+
 //click on element
         public static void clickMethod(WebDriver driver,String xpath,String elementName){
             WebDriverWait wait = new WebDriverWait(driver,15);
             try{
                 System.out.println("Clicking on " + elementName);
+                //WebElement element = driver.findElement(By.xpath("..."));
                 WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
                 element.click();
             } catch (Exception err) {
@@ -114,7 +147,7 @@ public class ReUsableMethods {
         return Result;
     }
 //mouse hover
-        public static void mouseHover(WebDriver driver,String xpath, int indexNumber ,String elementName){
+        public static void mouseHoverByIndex(WebDriver driver,String xpath, int indexNumber ,String elementName){
             WebDriverWait wait = new WebDriverWait(driver,15);
             Actions mouseMove = new Actions(driver);
             try {
@@ -240,10 +273,21 @@ public class ReUsableMethods {
             e.printStackTrace();
         }
     }//end of getScreenshot method
-
-
-
-
+    public static String getTextByIndex(WebDriver driver, WebElement xpath, int indexNumber, String elementName,ExtentTest logger) {
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        String Result = "";
+        try {
+            System.out.println(" Getting Text " + elementName);
+            WebElement element = wait.until(ExpectedConditions.visibilityOfAllElements(xpath)).get(indexNumber);
+            Result = element.getText();
+            System.out.println("Result is " + Result);
+            logger.log(LogStatus.PASS,"Result is " + Result + " for " + elementName);
+        } catch (Exception err) {
+            System.out.println("Unable to Get Text " + elementName);
+            getScreenShot(driver,elementName,logger);
+        }//end of try catch
+        return Result;
+    }//end of getTextByindex
 }//end of class
 
 

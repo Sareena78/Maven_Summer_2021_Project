@@ -21,6 +21,7 @@ public class HomePage extends Reusable_Annotations_Class_Html_Report {
     @FindBy(xpath = "//*[@name='btnK']")
     WebElement googleSearchButton;
 
+
     //method to type on search field
     public void searchAKeyword(String userValue){
         Reusable_Methods_With_Logger.sendKeysMethod(driver,searchField,userValue,"Search Field",logger);

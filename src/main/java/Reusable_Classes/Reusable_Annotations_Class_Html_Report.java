@@ -34,8 +34,6 @@ public class Reusable_Annotations_Class_Html_Report {
         reports.endTest(logger);
     }//end of before method
 
-
-
     @AfterSuite
     public void quiteSession(){
 

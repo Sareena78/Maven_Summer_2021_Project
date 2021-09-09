@@ -17,15 +17,16 @@ public class SearchResultPage extends Reusable_Annotations_Class_Html_Report {
     }//end of constructor class
 
     //set up all the web element xpath locators you need for this page
-    @FindBy(xpath = "//*[@id='result-stat']")
-    WebElement searchResultText;
+    //@FindBy(xpath = "//*[@id='result-stats']")
+    //WebElement searchResultText;
 
     //method to capture the search result and print out only the search number
     public void getSearchNumber(){
-       String results =  Reusable_Methods_With_Logger.getText(driver,searchResultText,"Search Result",logger);
-       String[] arrayResults = results.split(" ");
-       System.out.println("My Search number is " + arrayResults[1]);
-       logger.log(LogStatus.INFO,"My Search number is " + arrayResults[1]);
+       String results =  Reusable_Methods_With_Logger.getText(driver,"//*[@id='result-stats']","Search Result",logger);
+       System.out.println(results);
+       //String[] arrayResults = results.split(" ");
+       //System.out.println("My Search number is " + arrayResults[1]);
+       //logger.log(LogStatus.INFO,"My Search number is " + arrayResults[1]);
     }//end of get search number
 
 

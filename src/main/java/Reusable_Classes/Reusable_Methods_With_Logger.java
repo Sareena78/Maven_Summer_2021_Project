@@ -117,20 +117,22 @@ public class Reusable_Methods_With_Logger {
         }//end of try catch
     }//end of selectMethod
 
-    public static String getText(WebDriver driver, WebElement xpath, String elementName,ExtentTest logger) {
+    public static String getText(WebDriver driver, String xpath, String elementName,ExtentTest logger) {
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        String Result = "";
+        String result = "";
         try {
-            System.out.println(" Getting Text " + elementName);
-            WebElement element = wait.until(ExpectedConditions.visibilityOf(xpath));
-            Result = element.getText();
-            System.out.println("Result is " + Result);
-            logger.log(LogStatus.PASS,"Result is " + Result + " for " + elementName);
+            System.out.println("Getting Text " + elementName);
+            //WebElement element = wait.until(ExpectedConditions.visibilityOf(xpath));
+            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+            result = element.getText();
+            System.out.println("Result is " + result);
+            logger.log(LogStatus.PASS,"Result is " + result + " for " + elementName);
         } catch (Exception err) {
-            System.out.println("Unable to Get Text " + elementName);
-            logger.log(LogStatus.FAIL,"Unable to Get Text " + elementName);
+            System.out.println("Unable to Get Text " + elementName + " " + err);
+            logger.log(LogStatus.FAIL,"Unable to Get Text " + elementName + " " +err);
+            getScreenShot(driver,elementName,logger);
         }
-        return Result;
+        return result;
     }//end of getText
 
     public static String getTextByIndex(WebDriver driver, String xpath, int indexNumber, String elementName) {

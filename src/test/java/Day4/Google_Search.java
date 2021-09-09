@@ -7,14 +7,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Google_Search {
     public static void main(String[] args) throws InterruptedException {
 
-        //set the property and path to your chromedriver
+        //set the property and path to your chromedriver to invoke the web browser
         System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver.exe");
 
         //define the chrome driver basically what driver I am going to use for automation
         WebDriver driver = new ChromeDriver();
 
         //navigate to google search page
-        //driver.navigate().to("https://www.google.com");
         driver.navigate().to("https://www.google.com");
 
         //maximize the browser screen
